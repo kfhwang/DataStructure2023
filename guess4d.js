@@ -24,13 +24,14 @@ for(var i=0; i<4;i++){
 }
 
 var answer=[0,1,2,3,4,5,6,7,8,9];
+//answer.sort(function(a, b){return b-a});
 answer.sort(function(a, b){return Math.random()-0.5});
 
 //console.log(answer)
 
 //input
-var counterA=0, counterB=0;
 for(var i=0; i<7;i++){
+    var counterA=0, counterB=0;
     do {
         var guess = readline.question("Please guess 4 digits?");
 
@@ -46,7 +47,23 @@ for(var i=0; i<7;i++){
     //  answer[0],answer[1], answer[2], answer[3];
     //  guess[0], guess[1], guess[2], guess[3];
     //sohw ?A?B
-    
+    for (let ans_idx = 0; ans_idx < 4; ans_idx++) {
+       
+        for (let guess_idx = 0; guess_idx < 4; guess_idx++) {
+            if(guess[guess_idx] == answer[ans_idx]){
+                if(guess_idx==ans_idx){
+                    counterA++;
+                }
+                else{
+                    counterB++;
+                }
+            }
+            
+        }
+        
+    }
+    console.log("Your guess:" + counterA+"A"+counterB+"B")
+
      if(counterA==4){
          console.log("You win the game!");
          break;
