@@ -38,15 +38,18 @@ do{
     }
 }while(true);
 
+let numVistit=0;
 //to visit
 //set flag=>1
 //if flag==1 then game over
 while(true){
     if(visited[startR][startC]==1){
-        console.log("Game over!");
+        console.log("Game over! Num of vistied: "+numVistit);
+        
         break;
     }else{
         visited[startR][startC]=1; 
+        numVistit++;
         //next point
         // startR =  parseInt(dynamic2d[startR][startC].split(",")[0]);
         // startC =  parseInt(dynamic2d[startR][startC].split(",")[1]);
