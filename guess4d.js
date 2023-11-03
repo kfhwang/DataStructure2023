@@ -26,7 +26,9 @@ for(var i=0; i<4;i++){
 var answer=[0,1,2,3,4,5,6,7,8,9];
 //answer.sort(function(a, b){return b-a});
 answer.sort(function(a, b){return Math.random()-0.5});
-
+var ary=[{age:15, height:180},{age:18, height:176},{age:19, height:172}]
+//ary.sort(function(a,b){return a.height-b.height})
+ary.sort(function(a,b){return b.age-a.age})
 //console.log(answer)
 
 //input
