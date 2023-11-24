@@ -39,13 +39,25 @@ function drawBoard() {
         }
     }
 }
-
-
+function drawPoint(row, col){
+    var canvas = document.getElementById("board").getContext("2d");
+    if (MAZE[row][col] == 0) {
+        canvas.fillStyle = "#ffffff";
+    }
+    else if (MAZE[row][col] == 1) {
+        canvas.fillStyle = "#000";
+    } else if (MAZE[row][col] == 2) {
+        canvas.fillStyle = "#f00";
+    }
+    canvas.fillRect(col * 50, row * 50, 50, 50);
+}
+ 
 function go() {
     drawBoard();
     //Method 2
     while (Step.row != Exit.row || Step.col != Exit.col) {
         MAZE[Step.row][Step.col] = 2;
+        drawPoint(Step.row, Step.col);
         //up
         if (MAZE[Step.row - 1][Step.col] == 0) {
             Stack.push(new Point(Step.row, Step.col));
@@ -78,6 +90,8 @@ function go() {
     }
     //To exit
     if (Stack.length > 0) {
+        MAZE[Step.row][Step.col] = 2;
+        drawPoint(Step.row, Step.col);
         console.log("Done!");
     } else {
         console.log("No Solution!");
