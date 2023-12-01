@@ -51,7 +51,11 @@ function drawPoint(row, col){
     }
     canvas.fillRect(col * 50, row * 50, 50, 50);
 }
- 
+
+var dir=[[-1,0],[0,-1],[1,0],[0,1]]
+dir.sort((a,b)=>{
+    return Math.random()-0.5;
+})
 function go() {
     drawBoard();
     //Method 2
@@ -59,24 +63,28 @@ function go() {
         MAZE[Step.row][Step.col] = 2;
         drawPoint(Step.row, Step.col);
         //up
-        if (MAZE[Step.row - 1][Step.col] == 0) {
+        if (MAZE[Step.row + dir[0][0]][Step.col+dir[0][1]] == 0) {
             Stack.push(new Point(Step.row, Step.col));
-            Step.row = Step.row - 1;
+            Step.row = Step.row + dir[0][0];
+            Step.col = Step.col + dir[0][1];
         } else
             //left
-            if (MAZE[Step.row][Step.col - 1] == 0) {
+            if (MAZE[Step.row+ dir[1][0]][Step.col +dir[1][1]] == 0) {
                 Stack.push(new Point(Step.row, Step.col));
-                Step.col = Step.col - 1;
+                Step.row = Step.row + dir[1][0];
+                Step.col = Step.col + dir[1][1];
             } else
                 //down
-                if (MAZE[Step.row + 1][Step.col] == 0) {
+                if (MAZE[Step.row + dir[2][0]][Step.col+dir[2][1]] == 0) {
                     Stack.push(new Point(Step.row, Step.col));
-                    Step.row = Step.row + 1;
+                    Step.row = Step.row + dir[2][0];
+                    Step.col = Step.col + dir[2][1];
                 } else
                     //right
-                    if (MAZE[Step.row][Step.col + 1] == 0) {
+                    if (MAZE[Step.row+ dir[3][0]][Step.col +dir[3][1]] == 0) {
                         Stack.push(new Point(Step.row, Step.col));
-                        Step.col = Step.col + 1;
+                        Step.row = Step.row + dir[3][0];
+                        Step.col = Step.col + dir[3][1];
                     } else {//trace back
                         if (Stack.length > 0) {
                             // var Prev = Stack.pop();
