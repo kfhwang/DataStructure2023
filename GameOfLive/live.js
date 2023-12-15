@@ -81,16 +81,20 @@ class DrawGame{
 DrawGame.prototype.draw= function(){
     for (let row = 0; row < this.game.row; row++) {
         for (let col = 0; col < this.game.col; col++) {
-           if(this.game.grid[row][col]==LIVE){
+           
+        }
+    }
+}
+DrawGame.prototype.drawPoint= function(row,col){
+if(this.game.grid[row][col]==LIVE){
                this.canvas.fillStyle = "#f00";
            }else{
                 this.canvas.fillStyle = "#fff";
            }   
             this.canvas.fillRect(col*this.size, row*this.size, this.size, this.size);
             this.canvas.strokeRect(col*this.size, row*this.size, this.size, this.size);
-        }
-    }
 }
+
 
 var game1 = new Life(5,5);
 game1.grid[1][0]=LIVE;
@@ -119,5 +123,5 @@ function boardClick(event){
         drawgame1.game.grid[row][col]=DEAD;
     else
         drawgame1.game.grid[row][col]=LIVE;
-    drawgame1.draw();
+    drawgame1.drawPoint(row,col);
 }
