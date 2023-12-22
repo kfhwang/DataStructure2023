@@ -6,19 +6,39 @@ class OrderedList {
 OrderedList.prototype.insert = function (item) {
     //bsearch
 
-    //sequential search
-    var pos = 0;
-    for (; pos < this.data.length; pos++) {
-        if (item < this.data[pos])
+    var start=0, end=this.data.length-1, 
+        mid, pos
+    while(start<=end){
+        mid = Math.floor((start+end)/2);
+        if(item == this.data[mid]){
+           
             break;
-        // else
-        //     pos++;
+        }else if(item < this.data[mid]){
+            end = mid-1;
+        }else{
+            start = mid+1;
+        }
     }
+    // if(start > end)
+    //   pos = start;
+    // else
+    //  pos = mid;
+    
+    pos = (start > end) ? start : mid;
+
+    //sequential search
+    // var pos = 0;
+    // for (; pos < this.data.length; pos++) {
+    //     if (item < this.data[pos])
+    //         break;
+    //     // else
+    //     //     pos++;
+    // }
     this.data.splice(pos,0,item)
 }
 
 OrderedList.prototype.bSearch  = function(key){
-    var start=0, end=this.data.length-1, mid;
+    var start=0, end=this.data.length-1, mid
     while(start<=end){
         mid = Math.floor((start+end)/2);
         if(key == this.data[mid]){

@@ -14,15 +14,17 @@ var data1 = [
     { name: "Amy", age: 17 },
     { name: "Ali", age: 18 }
 ]
+
+var key="Ben"
 function findName(item){
-    return item.name == "Uber";
+    return item.name == key;
 }
 
 function findAge(item){
     return item.age >= 17;
 }
-
-console.log(data1.find(findName))
+key="Amy"
+var ben = data1.find(findName);
 
 console.log(data1.filter(findAge))
 console.log(JSON.stringify(data1))
