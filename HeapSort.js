@@ -8,7 +8,7 @@ Array.prototype.heapsort = function(){
         this.shiftDown(internal, this.length - 1);
     }
     //sort
-    for (let end = length - 1; end >= 1; end--) {
+    for (let end = this.length - 1; end >= 1; end--) {
         //swap 0, end
         var temp = this[0];
         this[0] = this[end];

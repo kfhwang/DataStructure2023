@@ -81,7 +81,7 @@ class DrawGame{
 DrawGame.prototype.draw= function(){
     for (let row = 0; row < this.game.row; row++) {
         for (let col = 0; col < this.game.col; col++) {
-           
+           this.drawPoint(row,col);
         }
     }
 }
